@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: socket-client-load
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: socket-client-load
+  template:
+    metadata:
+      labels:
+        app: socket-client-load
+    spec:
+      containers:
+        - name: socket-client-load
+          image: socket_client_load:0.1.0
+          env:
+            - name: SERVER_HOST
+              value: socket-server-service # Change to your server's IP or service name if running in Kubernetes
+            - name: SERVER_PORT
+              value: "5050"
+          args:
+            - "-server=$(SERVER_HOST):$(SERVER_PORT)"

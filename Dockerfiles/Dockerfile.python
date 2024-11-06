@@ -1,7 +1,0 @@
-FROM python:3.12-alpine
-
-WORKDIR /server
-
-COPY *.py ./
-
-CMD [ "python", "./socket_server.py" ]

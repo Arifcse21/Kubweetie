@@ -1,0 +1,9 @@
+FROM python:3.12-alpine
+
+WORKDIR /server
+
+COPY . .
+
+EXPOSE 5050
+
+CMD [ "python", "socket_server.py" ]
